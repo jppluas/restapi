@@ -21,3 +21,18 @@ exports.getAllItems = async (req, res) => {
     res.status(400).send(error.message);
   }
 };
+
+exports.getItem = async (req, res) => {
+  try {
+    const itemId = req.params.id;
+    const item = await db.collection('items').doc(itemId).get();
+    if (!item.exists) {
+      res.status(404).send('Item not found');
+    } else {
+      res.status(200).json({ id: item.id, ...item.data() });
+    }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+

@@ -4,5 +4,6 @@ const express = require('express');
 
  router.post('/items', itemController.createItem);
  router.get('/items', itemController.getAllItems);
+ router.get('/items/:id', itemController.getItem);
 
  module.exports = router;

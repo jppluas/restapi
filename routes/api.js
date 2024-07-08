@@ -4,5 +4,7 @@ const express = require('express');
 
  router.post('/items', itemController.createItem);
  router.get('/items', itemController.getAllItems);
+ router.delete('/items/:id', itemController.deleteItem);
+
 
  module.exports = router;

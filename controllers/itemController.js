@@ -21,3 +21,7 @@ exports.getAllItems = async (req, res) => {
     res.status(400).send(error.message);
   }
 };
+
+exports.updateItem = async (req, res) => { 
+  
+}

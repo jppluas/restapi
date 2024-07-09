@@ -36,3 +36,14 @@ exports.getItem = async (req, res) => {
   }
 };
 
+exports.deleteItem = async (req, res) => { 
+  try {
+    const itemId = req.params.id;
+    if (!itemId) throw new Error('ID is required');
+
+    await db.collection('items').doc(itemId).delete();
+    res.status(200).send(`Item ${itemId} has been deleted`);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}

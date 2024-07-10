@@ -8,11 +8,17 @@ const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_API)
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
-
+/* Referencia al módulo swagger-ui-express */
+const swaggerUi = require('swagger-ui-express')
+ /* Referencia al archivo con la descripción */
+ const swaggerFile = require('./swagger_output.json')
 const app = express();
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 5000;
+
+ /* Ruta Base -> Documentación */
+ app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 app.use('/api', require('./routes/api'));
 

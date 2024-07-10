@@ -54,6 +54,29 @@ exports.getAllItems = async (req, res) => {
 };
 
 exports.updateItem = async (req, res) => { 
+
+  /*
+      #swagger.tags = ['Items']
+      #swagger.description = 'Update an item'
+      #swagger.summary = 'Update an item'
+      #swagger.parameters['id'] = {
+
+          description: 'Item id',
+          required: true,
+      }
+      #swagger.parameters['data'] = {
+          in: 'body',
+          description: 'Data to update an item',
+          required: true,
+      }
+      #swagger.responses[200] = {
+          description: 'Item successfully updated',
+      }
+      #swagger.responses[400] = {
+          description: 'Bad request',
+      }
+  */
+
   try {
     const itemId = req.params.id;
     const data = req.body;
@@ -101,6 +124,25 @@ exports.getItem = async (req, res) => {
 };
 
 exports.deleteItem = async (req, res) => { 
+
+  /*
+      #swagger.tags = ['Items']
+      #swagger.description = 'Delete an item'
+      #swagger.summary = 'Delete an item'
+      #swagger.parameters['id'] = {
+          description: 'Item id',
+          required: true,
+      }
+      #swagger.responses[200] = {
+          description: 'Item successfully deleted',
+      }
+      #swagger.responses[400] = {
+
+          description: 'Bad request', 
+      }
+  */
+ 
+
   try {
     const itemId = req.params.id;
     if (!itemId) throw new Error('ID is required');

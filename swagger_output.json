@@ -5,10 +5,10 @@
     "description": "REST API with Express and Firestore",
     "version": "1.0.0"
   },
-  "host": "localhost:5500",
+  "host": "https://restapi-cizn.onrender.com",
   "basePath": "/api",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/items": {

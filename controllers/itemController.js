@@ -18,6 +18,24 @@ exports.createItem = async (req, res) => {
          description: 'Bad request',
      }
    */
+
+  /* 
+     #swagger.tags = ['Items']
+     #swagger.description = 'Create an item'
+     #swagger.summary = 'Create an item'
+     #swagger.parameters['data'] = {
+         in: 'body',
+         description: 'Data to create an item',
+         required: true,
+     }
+     #swagger.responses[201] = {
+         description: 'Item successfully created',
+     }
+     #swagger.responses[400] = {
+         description: 'Bad request',
+     }
+   */
+
   try {
     const data = req.body;
     const itemRef = await db.collection('items').add(data);
@@ -28,7 +46,8 @@ exports.createItem = async (req, res) => {
 };
 
 exports.getAllItems = async (req, res) => {
-  /* 
+
+   /* 
      #swagger.tags = ['Items']
      #swagger.description = 'Get all items entries'
      #swagger.summary = 'Get all items entries'
@@ -39,6 +58,7 @@ exports.getAllItems = async (req, res) => {
          description: 'Bad request',
      }
    */
+
   try {
     const itemsSnapshot = await db.collection('items').get();
     const items = [];
@@ -50,6 +70,29 @@ exports.getAllItems = async (req, res) => {
 };
 
 exports.updateItem = async (req, res) => { 
+
+  /*
+      #swagger.tags = ['Items']
+      #swagger.description = 'Update an item'
+      #swagger.summary = 'Update an item'
+      #swagger.parameters['id'] = {
+
+          description: 'Item id',
+          required: true,
+      }
+      #swagger.parameters['data'] = {
+          in: 'body',
+          description: 'Data to update an item',
+          required: true,
+      }
+      #swagger.responses[200] = {
+          description: 'Item successfully updated',
+      }
+      #swagger.responses[400] = {
+          description: 'Bad request',
+      }
+  */
+
   try {
     const itemId = req.params.id;
     const data = req.body;
@@ -63,7 +106,8 @@ exports.updateItem = async (req, res) => {
 
 
 exports.getItem = async (req, res) => {
-   /* 
+
+  /* 
      #swagger.tags = ['Items']
      #swagger.description = 'Get an item entry'
      #swagger.summary = 'Get an item entry'
@@ -81,6 +125,7 @@ exports.getItem = async (req, res) => {
          description: 'Get an item by id',
      }
    */
+
   try {
     const itemId = req.params.id;
     const item = await db.collection('items').doc(itemId).get();
@@ -95,6 +140,25 @@ exports.getItem = async (req, res) => {
 };
 
 exports.deleteItem = async (req, res) => { 
+
+  /*
+      #swagger.tags = ['Items']
+      #swagger.description = 'Delete an item'
+      #swagger.summary = 'Delete an item'
+      #swagger.parameters['id'] = {
+          description: 'Item id',
+          required: true,
+      }
+      #swagger.responses[200] = {
+          description: 'Item successfully deleted',
+      }
+      #swagger.responses[400] = {
+
+          description: 'Bad request', 
+      }
+  */
+ 
+
   try {
     const itemId = req.params.id;
     if (!itemId) throw new Error('ID is required');

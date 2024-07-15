@@ -5,10 +5,10 @@
     "description": "REST API with Express and Firestore",
     "version": "1.0.0"
   },
-  "host": "localhost:5500",
+  "host": "restapi-mel.onrender.com",
   "basePath": "/api",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/items": {
@@ -84,40 +84,60 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Items"
+        ],
+        "summary": "Delete an item",
+        "description": "Delete an item",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Item id"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Item successfully deleted"
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Bad request"
           }
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Items"
+        ],
+        "summary": "Update an item",
+        "description": "Update an item",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Item id"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Data to update an item",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Item successfully updated"
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Bad request"
           }
         }
       }
